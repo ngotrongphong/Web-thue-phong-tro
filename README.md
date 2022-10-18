@@ -16,9 +16,9 @@
   - Database: MySQL
 
 - Tài liệu
-  - [Mô tả đề tài]
-  - [Sơ đồ thực thể]
-  - [Cơ sở dữ liệu]
+  - [Giới thiệu đề tài]
+  - [Phân tích hệ thống]
+  - [Thiết kế hệ thống]
 
 [mai xuân tráng]: https://www.researchgate.net/profile/Mai-Trang
 [giới thiệu đề tài]: ...
