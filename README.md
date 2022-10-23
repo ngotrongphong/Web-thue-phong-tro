@@ -16,11 +16,9 @@
   - Database: MySQL
 
 - Tài liệu
-  - [Giới thiệu đề tài]
+  - [Báo cáo]
   - [Phân tích hệ thống]
   - [Thiết kế hệ thống]
 
 [mai xuân tráng]: https://www.researchgate.net/profile/Mai-Trang
-[giới thiệu đề tài]: ...
-[phân tích hệ thống]: ...
-[thiết kế hệ thống]: ...
+[báo cáo]: https://github.com/twinddev/Web-thue-phong-tro/tree/master/b%C3%A1o%20c%C3%A1o
