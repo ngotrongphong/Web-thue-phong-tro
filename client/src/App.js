@@ -6,8 +6,9 @@ function App() {
   return (
     <div className="w-screen h-screen bg-primary">
       <Routes>
-        <Route path={path.HOME} element={<Home></Home>}></Route>
-        <Route path={path.LOGIN} element={<Login></Login>}></Route>
+        <Route path={path.HOME} element={<Home></Home>}>
+          <Route path={path.LOGIN} element={<Login></Login>}></Route>
+        </Route>
       </Routes>
     </div>
   );

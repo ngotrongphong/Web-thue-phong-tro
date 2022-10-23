@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useCallback } from "react";
 import logo from "../../assets/logo.svg";
 import { Button } from "../../components";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import { path } from "../../utils/constant";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const goLogin = useCallback(() => {
+    navigate(path.LOGIN);
+  }, []);
   return (
     <div className="flex items-center justify-between w-1100">
       <img
@@ -17,11 +23,13 @@ const Header = () => {
           text={"Đăng nhập"}
           textColor="text-white"
           bgColor="bg-[#3961fb]"
+          onClick={goLogin}
         ></Button>
         <Button
           text={"Đăng ký"}
           textColor="text-white"
           bgColor="bg-[#3961fb]"
+          onClick={goLogin}
         ></Button>
         <Button
           text={"Đăng tin mới"}

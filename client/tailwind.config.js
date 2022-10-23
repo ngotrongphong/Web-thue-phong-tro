@@ -11,6 +11,9 @@ module.exports = {
         secondary: "#1266dd",
         third: "#f73859",
       },
+      maxWidth: {
+        600: "600px",
+      },
     },
   },
   plugins: [],
