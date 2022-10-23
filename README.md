@@ -15,10 +15,8 @@
   - Back-end: NodeJS, ExpressJS
   - Database: MySQL
 
-- Tài liệu
-  - [Báo cáo]
-  - [Phân tích hệ thống]
-  - [Thiết kế hệ thống]
+- Báo cáo chi tiết
+  - [Tại đây]
 
 [mai xuân tráng]: https://www.researchgate.net/profile/Mai-Trang
-[báo cáo]: https://github.com/twinddev/Web-thue-phong-tro/tree/master/b%C3%A1o%20c%C3%A1o
+[tại đây]: https://github.com/twinddev/Web-thue-phong-tro/tree/master/b%C3%A1o%20c%C3%A1o
