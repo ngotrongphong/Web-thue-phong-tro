@@ -1,12 +1,14 @@
 import React from "react";
 import Header from "./Header";
 import { Outlet } from "react-router-dom";
+import Navigation from "./Navigation";
 
 const Home = () => {
   return (
-    <div className="h-full m-auto border border-red-500 w-1100">
+    <div className="flex flex-col items-center w-full h-full ">
       <Header></Header>
-      <div className="flex flex-col items-center justify-start w-full">
+      <Navigation></Navigation>
+      <div className="flex flex-col items-center justify-start border border-red-500 w-1100">
         <Outlet></Outlet>
       </div>
     </div>
