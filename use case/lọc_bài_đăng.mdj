@@ -872,7 +872,7 @@
 									"font": "Arial;13;0",
 									"left": 630.5,
 									"top": 444.5,
-									"width": 108.21728515625,
+									"width": 108,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGEBUujlVGwnOA="
@@ -1071,7 +1071,7 @@
 									"font": "Arial;13;0",
 									"left": 614.5,
 									"top": 516.5,
-									"width": 147.2490234375,
+									"width": 147,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGEBUvdQVHewZc="
@@ -1469,7 +1469,7 @@
 									"font": "Arial;13;0",
 									"left": 811.5,
 									"top": 380.5,
-									"width": 94.51904296875,
+									"width": 94,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGEBUzYsVJJ2b0="
@@ -1668,7 +1668,7 @@
 									"font": "Arial;13;0",
 									"left": 859,
 									"top": 276.5,
-									"width": 90.1708984375,
+									"width": 89,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGEBU6LsFJ4VdQ="
@@ -5201,11 +5201,11 @@
 												"$ref": "AAAAAAGEBY4Qgtcf0Qc="
 											},
 											"font": "Arial;13;1",
-											"left": 517,
+											"left": 522,
 											"top": 291.5,
-											"width": 66,
+											"width": 88,
 											"height": 13,
-											"text": "Thành phố"
+											"text": "Lọc thành phố"
 										},
 										{
 											"_type": "LabelView",
@@ -5234,9 +5234,9 @@
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 512,
+									"left": 517,
 									"top": 284.5,
-									"width": 76.42822265625,
+									"width": 99.5400390625,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGEBY4QgtcgFx0="
@@ -5331,7 +5331,7 @@
 							"containerChangeable": true,
 							"left": 496,
 							"top": 280,
-							"width": 108,
+							"width": 140,
 							"height": 35,
 							"nameCompartment": {
 								"$ref": "AAAAAAGEBY4Qgtcf0Qc="
@@ -5393,11 +5393,11 @@
 												"$ref": "AAAAAAGEBY49ANdNnak="
 											},
 											"font": "Arial;13;1",
-											"left": 524,
+											"left": 524.5,
 											"top": 347.5,
-											"width": 62,
+											"width": 63,
 											"height": 13,
-											"text": "Giá cả"
+											"text": "Lọc giá cả"
 										},
 										{
 											"_type": "LabelView",
@@ -5428,9 +5428,9 @@
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 519,
+									"left": 519.5,
 									"top": 340.5,
-									"width": 72,
+									"width": 73.578125,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGEBY49ANdOC+A="
@@ -5530,7 +5530,7 @@
 							"containerChangeable": true,
 							"left": 504,
 							"top": 336,
-							"width": 102,
+							"width": 104,
 							"height": 35,
 							"nameCompartment": {
 								"$ref": "AAAAAAGEBY49ANdNnak="
@@ -5592,11 +5592,11 @@
 												"$ref": "AAAAAAGEBY5ZJtd7HJk="
 											},
 											"font": "Arial;13;1",
-											"left": 524,
+											"left": 528,
 											"top": 411.5,
-											"width": 62,
+											"width": 79,
 											"height": 13,
-											"text": "Diện tích"
+											"text": "Lọc diện tích"
 										},
 										{
 											"_type": "LabelView",
@@ -5627,9 +5627,9 @@
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 519,
+									"left": 523,
 									"top": 404.5,
-									"width": 72,
+									"width": 90.1708984375,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGEBY5ZJtd8pvQ="
@@ -5729,7 +5729,7 @@
 							"containerChangeable": true,
 							"left": 504,
 							"top": 400,
-							"width": 102,
+							"width": 127,
 							"height": 35,
 							"nameCompartment": {
 								"$ref": "AAAAAAGEBY5ZJtd7HJk="
@@ -5791,11 +5791,11 @@
 												"$ref": "AAAAAAGEBY6Dd9epgFc="
 											},
 											"font": "Arial;13;1",
-											"left": 506,
+											"left": 510.5,
 											"top": 475.5,
-											"width": 89,
+											"width": 113,
 											"height": 13,
-											"text": "Thứ tự ưu tiên"
+											"text": "Lọc thứ tự ưu tiên"
 										},
 										{
 											"_type": "LabelView",
@@ -5826,9 +5826,9 @@
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 501,
+									"left": 505.5,
 									"top": 468.5,
-									"width": 100.33984375,
+									"width": 123.45166015625,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGEBY6Dd9eqf/s="
@@ -5928,7 +5928,7 @@
 							"containerChangeable": true,
 							"left": 480,
 							"top": 464,
-							"width": 141,
+							"width": 174,
 							"height": 35,
 							"nameCompartment": {
 								"$ref": "AAAAAAGEBY6Dd9epgFc="
@@ -5973,7 +5973,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 438,
-									"top": 336,
+									"top": 338,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -5993,7 +5993,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 408,
-									"top": 303,
+									"top": 305,
 									"width": 53.49169921875,
 									"height": 13,
 									"alpha": -1.7759008086364743,
@@ -6016,7 +6016,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 431,
-									"top": 307,
+									"top": 309,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -6034,7 +6034,7 @@
 								"$ref": "AAAAAAGEBY4QgtcecR8="
 							},
 							"lineStyle": 1,
-							"points": "495:312;375:344",
+							"points": "495:315;375:345",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGEBY7Ty9fXTK0="
@@ -6163,7 +6163,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 435,
-									"top": 398,
+									"top": 397,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -6183,7 +6183,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 432,
-									"top": 399,
+									"top": 398,
 									"width": 53.49169921875,
 									"height": 13,
 									"alpha": 2.657057775506325,
@@ -6206,7 +6206,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 442,
-									"top": 369,
+									"top": 368,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -6224,7 +6224,7 @@
 								"$ref": "AAAAAAGEBY5ZJtd6/Rg="
 							},
 							"lineStyle": 1,
-							"points": "503:405;375:376",
+							"points": "503:403;375:375",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGEBY7mNtf5x8s="
@@ -6257,7 +6257,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 423,
+									"left": 431,
 									"top": 428,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -6277,7 +6277,7 @@
 										"$ref": "AAAAAAGEBY7yw9gH/Ic="
 									},
 									"font": "Arial;13;0",
-									"left": 384,
+									"left": 392,
 									"top": 424,
 									"width": 53.49169921875,
 									"height": 13,
@@ -6300,7 +6300,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 436,
+									"left": 444,
 									"top": 401,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -6319,7 +6319,7 @@
 								"$ref": "AAAAAAGEBY6Dd9eoyT4="
 							},
 							"lineStyle": 1,
-							"points": "514:463;347:379",
+							"points": "528:463;349:379",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGEBY7yxNgKgXQ="
@@ -6655,7 +6655,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGEBYzwJNaiI8E="
 					},
-					"name": "Thành phố",
+					"name": "Lọc thành phố",
 					"ownedElements": [
 						{
 							"_type": "UMLExtend",
@@ -6706,7 +6706,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGEBYzwJNaiI8E="
 					},
-					"name": "Giá cả",
+					"name": "Lọc giá cả",
 					"ownedElements": [
 						{
 							"_type": "UMLExtend",
@@ -6729,7 +6729,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGEBYzwJNaiI8E="
 					},
-					"name": "Diện tích",
+					"name": "Lọc diện tích",
 					"ownedElements": [
 						{
 							"_type": "UMLExtend",
@@ -6752,7 +6752,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGEBYzwJNaiI8E="
 					},
-					"name": "Thứ tự ưu tiên",
+					"name": "Lọc thứ tự ưu tiên",
 					"ownedElements": [
 						{
 							"_type": "UMLExtend",
