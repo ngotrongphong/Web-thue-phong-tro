@@ -14,17 +14,17 @@ const Header = () => {
     <div className="w-1100">
       <div className="flex items-center justify-between w-full">
         <img
-          src={logo}
-          alt="logo"
+          // src={logo}
+          alt="Chỗ này là logo"
           className="w-[240px] h-[70px] object-contain"
         />
         <div className="flex items-center gap-1">
-          <small>Phongtro123.com xin chào!</small>
+          {/* <small>PhongtroSV xin chào!</small> */}
           <Button
             text={"Đăng nhập"}
             textColor="text-white"
             bgColor="bg-[#3961fb]"
-            onClick={goLogin}
+            onClick={() => goLogin("login")}
           ></Button>
           <Button
             text={"Đăng ký"}
