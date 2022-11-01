@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { InputForm, Button } from "../../components";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as actions from "../../store/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
   const location = useLocation();
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
+  const { isLoggedIn } = useSelector((state) => state.auth);
   const [isRegister, setIsRegister] = useState(location.state?.flag);
   const [invalidFields, setInvalidFields] = useState([]);
   const [payload, setPayload] = useState({
@@ -19,21 +20,25 @@ const Login = () => {
     setIsRegister(location.state?.flag);
   }, [location.state?.flag]);
 
+  useEffect(() => {
+    isLoggedIn && navigate("/");
+  }, [isLoggedIn]);
+
   const handleSubmit = async () => {
-    // console.log(payload);
-    // isRegister
-    //   ? dispatch(actions.register(payload))
-    //   : dispatch(actions.login(payload));
-    let invalids = validate(payload);
-    console.log(
-      "🚀 ~ file: Login.js ~ line 28 ~ handleSubmit ~ invalids",
-      invalids
-    );
+    let finalPayLoad = isRegister
+      ? payload
+      : {
+          phone: payload.phone,
+          password: payload.password,
+        };
+    let invalids = validate(finalPayLoad);
+    if (invalids === 0)
+      isRegister
+        ? dispatch(actions.register(payload))
+        : dispatch(actions.login(payload));
   };
-  console.log(invalidFields);
 
   const validate = (payload) => {
-    console.log(payload);
     let invalids = 0;
     let fields = Object.entries(payload);
     fields.forEach((item) => {
@@ -125,10 +130,16 @@ const Login = () => {
       <div className="flex items-center justify-between mt-7">
         {isRegister ? (
           <small>
-            Bạn đã có tài khoản?{" "}
+            Bạn đã có tài khoản?
             <span
               onClick={() => {
                 setIsRegister(false);
+                setPayload({
+                  phone: "",
+                  password: "",
+                  name: "",
+                });
+                setInvalidFields("");
               }}
               className="text-blue-500 hover:text-[red] cursor-pointer"
             >
@@ -143,6 +154,12 @@ const Login = () => {
             <small
               onClick={() => {
                 setIsRegister(true);
+                setPayload({
+                  phone: "",
+                  password: "",
+                  name: "",
+                });
+                setInvalidFields("");
               }}
               className="text-[blue] hover:text-[red] cursor-pointer"
             >
