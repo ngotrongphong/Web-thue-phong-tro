@@ -2,7 +2,6 @@ import React, { memo } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
 const Button = ({ text, textColor, bgColor, icAfter, onClick, fullWidth }) => {
-  console.log("re-render");
   return (
     <button
       type="button"
