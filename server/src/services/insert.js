@@ -7,7 +7,7 @@ import nhachothue from "../../data/nhachothue.json";
 import chothuephongtro from "../../data/chothuephongtro.json";
 import generateCode from "../utils/generateCode";
 require("dotenv").config();
-const dataBody = chothuephongtro.body;
+const dataBody = chothuematbang.body;
 
 const hashPassword = (password) =>
   bcrypt.hashSync(password, bcrypt.genSaltSync(12));
@@ -17,7 +17,7 @@ export const insertService = () =>
     try {
       dataBody.forEach(async (item) => {
         let postId = v4();
-        let labelCode = generateCode(4);
+        let labelCode = generateCode(item?.header?.class?.classType);
         let attributesId = v4();
         let userId = v4();
         let overviewId = v4();
@@ -29,7 +29,7 @@ export const insertService = () =>
           labelCode,
           address: item?.header?.address,
           attributesId,
-          categoryCode: "CTPT",
+          categoryCode: "CTMB",
           description: JSON.stringify(item?.mainContent?.content),
           userId,
           overviewId,
@@ -49,9 +49,12 @@ export const insertService = () =>
           image: JSON.stringify(item?.images),
         });
 
-        await db.Label.create({
-          code: labelCode,
-          value: item?.header?.class?.classType,
+        await db.Label.findOrCreate({
+          where: { code: labelCode },
+          defaults: {
+            code: labelCode,
+            value: item?.header?.class?.classType,
+          },
         });
 
         await db.Overview.create({
