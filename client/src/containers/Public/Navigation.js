@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { apiGetCategories } from "../../services/category";
-import { formatVietnameseToString } from "../../utils/constant";
+import { formatVietnameseToString } from "../../utils/Common/formatVietnameseToString";
 import * as actions from "../../store/actions";
 
 const notActive = "hover:bg-third py-2 px-4 h-full flex items-center";
