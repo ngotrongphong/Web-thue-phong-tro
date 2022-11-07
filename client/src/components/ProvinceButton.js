@@ -2,15 +2,13 @@ import React from "react";
 
 const ProvinceButton = ({ name, image }) => {
   return (
-    <div className="shadow-md cursor-pointer rounded-bl-xl rounded-br-xl">
+    <div className="shadow-md cursor-pointer text-blue-700  hover:text-[#febb02] rounded-bl-xl rounded-br-xl">
       <img
         src={image}
         alt={name}
         className="w-[190px] h-[110px] object-cover rounded-tl-xl rounded-tr-xl "
       />
-      <p className="block p-2 font-medium text-center text-blue-700 hover:text-[#febb02]">
-        {name}
-      </p>
+      <p className="block p-2 font-medium text-center ">{name}</p>
     </div>
   );
 };
