@@ -12,7 +12,7 @@ import { path } from "./utils/constant";
 
 function App() {
   return (
-    <div className="w-screen h-screen bg-primary">
+    <div className="bg-primary">
       <Routes>
         <Route path={path.HOME} element={<Home></Home>}>
           <Route path="*" element={<HomePage></HomePage>}></Route>
