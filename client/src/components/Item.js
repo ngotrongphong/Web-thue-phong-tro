@@ -62,12 +62,16 @@ const Item = ({
             <BsBookmarkStarFill color="orange" size={24}></BsBookmarkStarFill>
           </div>
         </div>
-        <div className="flex items-center justify-between my-2">
-          <span className="font-bold text-green-600">{attributes?.price}</span>
-          <span>{attributes.acreage}</span>
-          <span>{address}</span>
+        <div className="flex items-center justify-between gap-2 my-2">
+          <span className="overflow-hidden font-bold text-green-600 flex-3 whitespace-nowrap text-ellipsis">
+            {attributes?.price}
+          </span>
+          <span className="flex-1">{attributes.acreage}</span>
+          <span className="flex-3">{`${
+            address.split(",")[address.split(",").length - 2]
+          },${address.split(",")[address.split(",").length - 1]}`}</span>
         </div>
-        <p className="text-gray-500 w-full h-[50px] whitespace-no text-ellipsis overflow-hidden">
+        <p className="text-gray-500 w-full h-[50px] whitespace-nowrap text-ellipsis overflow-hidden">
           {description}
         </p>
         <div className="flex items-center justify-between my-5">
