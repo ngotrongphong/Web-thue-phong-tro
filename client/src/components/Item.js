@@ -1,5 +1,7 @@
 import React, { memo, useState } from "react";
 import icons from "../utils/icons";
+import { useNavigate, Link } from "react-router-dom";
+import { formatVietnameseToString } from "../utils/Common/formatVietnameseToString";
 
 const { GrStar, RiHeartFill, RiHeartLine, BsBookmarkStarFill } = icons;
 
@@ -13,8 +15,10 @@ const Item = ({
   description,
   attributes,
   address,
+  id,
 }) => {
   const [isHoverHeart, setIsHoverHeart] = useState(false);
+  const navigate = useNavigate();
   const handleStar = (star) => {
     let stars = [];
     for (let i = 1; i <= +star; i++)
@@ -25,7 +29,10 @@ const Item = ({
   };
   return (
     <div className="flex w-full py-4 border-t border-orange-600">
-      <div className="w-2/5 flex flex-wrap items-center gap-[2px] relative cursor-pointer">
+      <Link
+        to={`chi-tiet/${formatVietnameseToString(title)}/${id}`}
+        className="w-2/5 flex flex-wrap items-center gap-[2px] relative cursor-pointer"
+      >
         {images.length > 0 &&
           images
             .filter((i, index) => indexs.some((i) => i === index))
@@ -54,7 +61,7 @@ const Item = ({
             <RiHeartLine size={26}></RiHeartLine>
           )}
         </span>
-      </div>
+      </Link>
 
       <div className="w-3/5">
         <div className="flex justify-between w-full gap-4">
