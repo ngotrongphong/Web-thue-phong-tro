@@ -15,6 +15,14 @@ const Item = ({
   address,
 }) => {
   const [isHoverHeart, setIsHoverHeart] = useState(false);
+  const handleStar = (star) => {
+    let stars = [];
+    for (let i = 1; i <= +star; i++)
+      stars.push(
+        <GrStar className="star-item" size={18} color="#febb02"></GrStar>
+      );
+    return stars;
+  };
   return (
     <div className="flex w-full py-4 border-t border-orange-600">
       <div className="w-2/5 flex flex-wrap items-center gap-[2px] relative cursor-pointer">
@@ -51,11 +59,10 @@ const Item = ({
       <div className="w-3/5">
         <div className="flex justify-between w-full gap-4">
           <div className="font-medium text-red-600 uppercase">
-            <GrStar className="star-item" size={18} color="#febb02"></GrStar>
-            <GrStar className="star-item" size={18} color="#febb02"></GrStar>
-            <GrStar className="star-item" size={18} color="#febb02"></GrStar>
-            <GrStar className="star-item" size={18} color="#febb02"></GrStar>
-            <GrStar className="star-item" size={18} color="#febb02"></GrStar>
+            {handleStar(+star).length > 0 &&
+              handleStar(+star).map((star, number) => {
+                return <span key={number}>{star}</span>;
+              })}
             {title}
           </div>
           <div className="w-[10%] flex justify-end">
