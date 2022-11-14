@@ -1,8 +1,8 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import logo from "../../assets/logo.svg";
 import { Button } from "../../components";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useSearchParams } from "react-router-dom";
 import { path } from "../../utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../store/actions";
@@ -10,12 +10,17 @@ import * as actions from "../../store/actions";
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [searchParams] = useSearchParams();
+  const headerRef = useRef();
   const { isLoggedIn } = useSelector((state) => state.auth);
   const goLogin = useCallback((flag) => {
     navigate(path.LOGIN, { state: { flag } });
   }, []);
+  useEffect(() => {
+    headerRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [searchParams.get("page")]);
   return (
-    <div className="w-3/5">
+    <div ref={headerRef} className="w-3/5">
       <div className="flex items-center justify-between w-full">
         <Link to={"/"}>
           <img
