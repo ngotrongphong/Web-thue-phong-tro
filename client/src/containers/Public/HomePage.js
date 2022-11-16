@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { text } from "../../utils/constant";
 import { Province, ItemSidebar } from "../../components";
 import { List, Pagination } from "./index";
 import { useSearchParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "../../store/actions";
 
 const HomePage = () => {
   const [params] = useSearchParams();
-  const { categories } = useSelector((state) => state.app);
-  console.log(
-    "🚀 ~ file: HomePage.js ~ line 11 ~ HomePage ~ categories",
-    categories
-  );
+  const { categories, prices, areas } = useSelector((state) => state.app);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(actions.getPrices());
+    dispatch(actions.getAreas());
+  }, []);
   return (
     <div className="flex flex-col w-full gap-3 border border-red-500">
       <div>
@@ -30,8 +33,16 @@ const HomePage = () => {
             content={categories}
             title="Danh sách cho thuê"
           ></ItemSidebar>
-          <ItemSidebar title="Xem theo giá"></ItemSidebar>
-          <ItemSidebar title="Xem theo diện tích"></ItemSidebar>
+          <ItemSidebar
+            isDouble={true}
+            content={prices}
+            title="Xem theo giá"
+          ></ItemSidebar>
+          <ItemSidebar
+            isDouble={true}
+            content={areas}
+            title="Xem theo diện tích"
+          ></ItemSidebar>
         </div>
       </div>
     </div>

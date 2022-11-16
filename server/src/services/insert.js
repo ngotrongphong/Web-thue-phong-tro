@@ -6,8 +6,13 @@ import chothuecanho from "../../data/chothuecanho.json";
 import nhachothue from "../../data/nhachothue.json";
 import chothuephongtro from "../../data/chothuephongtro.json";
 import generateCode from "../utils/generateCode";
+import { dataPrice, dataArea } from "../utils/data";
+import { getNumberFromString } from "../utils/common";
+
 require("dotenv").config();
 const dataBody = chothuephongtro.body;
+
+// const prices =
 
 const hashPassword = (password) =>
   bcrypt.hashSync(password, bcrypt.genSaltSync(12));
@@ -22,6 +27,10 @@ export const insertService = () =>
         let userId = v4();
         let overviewId = v4();
         let imagesId = v4();
+        let currentArea = getNumberFromString(
+          item?.header?.attributes?.acreage
+        );
+        let currentPrice = getNumberFromString(item?.header?.attributes?.price);
         await db.Post.create({
           id: postId,
           title: item?.header?.title,
@@ -34,6 +43,12 @@ export const insertService = () =>
           userId,
           overviewId,
           imagesId,
+          areaCode: dataArea.find(
+            (area) => area.max >= currentArea && area.min <= currentArea
+          )?.code,
+          priceCode: dataPrice.find(
+            (price) => price.max >= currentPrice && price.min <= currentPrice
+          )?.code,
         });
 
         await db.Attribute.create({
@@ -89,6 +104,29 @@ export const insertService = () =>
       });
 
       resolve("Done.");
+    } catch (error) {
+      reject(error);
+    }
+  });
+
+export const createPricesAndAreas = () =>
+  new Promise((resolve, reject) => {
+    try {
+      dataPrice.forEach(async (item, index) => {
+        await db.Price.create({
+          code: item.code,
+          value: item.value,
+          order: index + 1,
+        });
+      });
+      dataArea.forEach(async (item, index) => {
+        await db.Area.create({
+          code: item.code,
+          value: item.value,
+          order: index + 1,
+        });
+      });
+      resolve("OK.");
     } catch (error) {
       reject(error);
     }
