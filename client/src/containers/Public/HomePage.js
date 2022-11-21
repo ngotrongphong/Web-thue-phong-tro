@@ -14,7 +14,7 @@ const HomePage = () => {
     dispatch(actions.getAreas());
   }, []);
   return (
-    <div className="flex flex-col w-full gap-3 border border-red-500">
+    <div className="flex flex-col w-full gap-3">
       <div>
         <h1 className="text-[28px] font-bold">{text.HOME_TITLE}</h1>
         <p className="text-base text-gray-700">{text.HOME_DESC}</p>
@@ -24,9 +24,8 @@ const HomePage = () => {
         <div className="w-[70%]">
           <List></List>
           <Pagination></Pagination>
-          <div className="h-[500px]"></div>
         </div>
-        <div className="w-[30%] border border-green-500 flex flex-col gap-4 justify-start items-center">
+        <div className="w-[30%] flex flex-col gap-4 justify-start items-center">
           <ItemSidebar
             content={categories}
             title="Danh sách cho thuê"
