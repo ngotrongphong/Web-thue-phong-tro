@@ -40,7 +40,7 @@ const Item = ({
               return (
                 <img
                   key={index}
-                  className="w-[140px] h-[120px] object-cover"
+                  className="w-[110px] h-[120px] object-cover"
                   src={i}
                   alt="preview"
                 />

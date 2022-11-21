@@ -2,12 +2,10 @@ import React, { useEffect } from "react";
 import { text } from "../../utils/constant";
 import { Province, ItemSidebar } from "../../components";
 import { List, Pagination } from "./index";
-import { useSearchParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../store/actions";
 
 const HomePage = () => {
-  const [params] = useSearchParams();
   const { categories, prices, areas } = useSelector((state) => state.app);
   const dispatch = useDispatch();
 
@@ -24,8 +22,8 @@ const HomePage = () => {
       <Province></Province>
       <div className="flex w-full gap-4">
         <div className="w-[70%]">
-          <List page={params.get("page")}></List>
-          <Pagination page={params.get("page")}></Pagination>
+          <List></List>
+          <Pagination></Pagination>
           <div className="h-[500px]"></div>
         </div>
         <div className="w-[30%] border border-green-500 flex flex-col gap-4 justify-start items-center">
@@ -36,11 +34,13 @@ const HomePage = () => {
           <ItemSidebar
             isDouble={true}
             content={prices}
+            type="priceCode"
             title="Xem theo giá"
           ></ItemSidebar>
           <ItemSidebar
             isDouble={true}
             content={areas}
+            type="areaCode"
             title="Xem theo diện tích"
           ></ItemSidebar>
         </div>
