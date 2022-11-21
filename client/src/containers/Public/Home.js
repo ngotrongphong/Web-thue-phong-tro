@@ -6,7 +6,7 @@ import { Contact, Intro } from "../../components";
 
 const Home = () => {
   return (
-    <div className="flex flex-col items-center w-full h-full ">
+    <div className="flex flex-col items-center w-full h-full gap-6 ">
       <Header></Header>
       <Navigation></Navigation>
       <Search></Search>
