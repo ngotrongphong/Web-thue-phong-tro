@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { text } from "../../utils/constant";
-import { Province, ItemSidebar } from "../../components";
+import { Province, ItemSidebar, RelatedPost } from "../../components";
 import { List, Pagination } from "./index";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../store/actions";
@@ -42,6 +42,7 @@ const HomePage = () => {
             type="areaCode"
             title="Xem theo diện tích"
           ></ItemSidebar>
+          <RelatedPost></RelatedPost>
         </div>
       </div>
     </div>
