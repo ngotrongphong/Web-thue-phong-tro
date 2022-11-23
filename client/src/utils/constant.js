@@ -1,6 +1,5 @@
 export const path = {
   HOME: "/*",
-  STAR: "*",
   HOME__PAGE: ":page",
   LOGIN: "login",
   CHO_THUE_CAN_HO: "cho-thue-can-ho",
@@ -8,6 +7,7 @@ export const path = {
   NHA_CHO_THUE: "nha-cho-thue",
   CHO_THUE_PHONG_TRO: "cho-thue-phong-tro",
   DETAIL_POST__TITLE__POSTID: "chi-tiet/:title/:postId",
+  SEARCH: "tim-kiem",
 };
 
 export const text = {
