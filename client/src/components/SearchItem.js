@@ -1,13 +1,19 @@
 import React, { memo } from "react";
 
-const SearchItem = ({ iconBefore, iconAfter, text }) => {
+const SearchItem = ({ IconBefore, IconAfter, text, fontWeight }) => {
   return (
-    <div className="flex items-center justify-between w-full px-4 py-2 text-[13.3px] text-gray-400 bg-white rounded-md">
+    <div className="bg-white py-2 px-4 w-full rounded-md text-gray-400 text-[13.3px] flex items-center justify-between">
       <div className="flex items-center w-full gap-1">
-        {iconBefore}
-        <span className="w-full ">{text}</span>
+        {IconBefore}
+        <span
+          className={`${fontWeight && "font-medium text-black"} w-[100px] ${
+            text ? "font-medium text-black" : ""
+          } overflow-hidden text-ellipsis whitespace-nowrap`}
+        >
+          {text}
+        </span>
       </div>
-      {iconAfter}
+      {IconAfter}
     </div>
   );
 };

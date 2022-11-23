@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "./Header";
 import { Outlet } from "react-router-dom";
 import { Navigation, Search } from "./index";
 import { Contact, Intro } from "../../components";
+import * as actions from "../../store/actions";
+import { useDispatch } from "react-redux";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(actions.getPrices());
+    dispatch(actions.getAreas());
+    dispatch(actions.getProvinces());
+  }, []);
+
   return (
     <div className="flex flex-col items-center w-full h-full gap-6 ">
       <Header></Header>
