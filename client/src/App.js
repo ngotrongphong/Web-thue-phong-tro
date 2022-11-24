@@ -9,8 +9,25 @@ import {
 } from "./containers/Public";
 import { path } from "./utils/constant";
 import { System, CreatePost } from "./containers/System";
+import * as actions from "./store/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function App() {
+  const dispatch = useDispatch();
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  useEffect(() => {
+    setTimeout(() => {
+      isLoggedIn && dispatch(actions.getCurrent());
+    }, 1000);
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    dispatch(actions.getPrices());
+    dispatch(actions.getAreas());
+    dispatch(actions.getProvinces());
+  }, []);
+
   return (
     <div className="bg-primary">
       <Routes>
