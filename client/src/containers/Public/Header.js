@@ -13,6 +13,8 @@ const Header = () => {
   const [searchParams] = useSearchParams();
   const headerRef = useRef();
   const { isLoggedIn } = useSelector((state) => state.auth);
+  const { currentData } = useSelector((state) => state.user);
+
   const goLogin = useCallback((flag) => {
     navigate(path.LOGIN, { state: { flag } });
   }, []);
@@ -48,14 +50,15 @@ const Header = () => {
             </>
           )}
           {isLoggedIn && (
-            <>
+            <div className="flex items-center gap-1">
+              <small>{currentData.name}</small>
               <Button
                 text={"Đăng xuất"}
                 textColor="text-white"
                 bgColor="bg-[#3961fb]"
                 onClick={() => dispatch(actions.logout())}
               ></Button>
-            </>
+            </div>
           )}
           <Button
             text={"Đăng tin mới"}
