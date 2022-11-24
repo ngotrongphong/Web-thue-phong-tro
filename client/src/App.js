@@ -8,40 +8,28 @@ import {
   SearchDetail,
 } from "./containers/Public";
 import { path } from "./utils/constant";
+import { System, CreatePost } from "./containers/System";
 
 function App() {
   return (
     <div className="bg-primary">
       <Routes>
-        <Route path={path.HOME} element={<Home></Home>}>
-          <Route path="*" element={<HomePage></HomePage>}></Route>
-          <Route path={path.STAR} element={<HomePage></HomePage>}></Route>
-          <Route path={path.LOGIN} element={<Login></Login>}></Route>
+        <Route path={path.HOME} element={<Home />}>
+          <Route path="*" element={<HomePage />} />
+          <Route path={path.LOGIN} element={<Login />} />
+          <Route path={path.CHO_THUE_CAN_HO} element={<Rental />} />
+          <Route path={path.CHO_THUE_MAT_BANG} element={<Rental />} />
+          <Route path={path.CHO_THUE_PHONG_TRO} element={<Rental />} />
+          <Route path={path.NHA_CHO_THUE} element={<Rental />} />
+          <Route path={path.SEARCH} element={<SearchDetail />} />
           <Route
-            path={path.CHO_THUE_CAN_HO}
-            element={<Rental></Rental>}
-          ></Route>
-          <Route
-            path={path.CHO_THUE_MAT_BANG}
-            element={<Rental></Rental>}
-          ></Route>
-          <Route
-            path={path.CHO_THUE_PHONG_TRO}
-            element={<Rental></Rental>}
-          ></Route>
-          <Route path={path.NHA_CHO_THUE} element={<Rental></Rental>}></Route>
-          <Route
-            path={path.SEARCH}
-            element={<SearchDetail></SearchDetail>}
-          ></Route>
-          <Route
-            path={path.DETAIL_POST__TITLE__POSTID}
-            element={<DetailPost></DetailPost>}
-          ></Route>
-          <Route
-            path={"chi-tiet/*"}
-            element={<DetailPost></DetailPost>}
-          ></Route>
+            path={path.DETAL_POST__TITLE__POSTID}
+            element={<DetailPost />}
+          />
+          <Route path={"chi-tiet/*"} element={<DetailPost />} />
+        </Route>
+        <Route path={path.SYSTEM} element={<System />}>
+          <Route path={path.CREATE_POST} element={<CreatePost />} />
         </Route>
       </Routes>
     </div>

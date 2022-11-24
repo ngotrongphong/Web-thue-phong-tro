@@ -4,21 +4,22 @@ import { formatVietnameseToString } from "../../utils/Common/formatVietnameseToS
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../store/actions";
 
-const notActive =
-  "hover:bg-third py-2 px-4 h-full flex items-center bg-secondary";
-const active = "hover:bg-third py-2 px-4 h-full flex items-center bg-third";
+const notActive = "hover:bg-third px-4 h-full flex items-center bg-secondary";
+const active = "hover:bg-third px-4 h-full flex items-center  bg-third";
 
-const Navigation = () => {
-  // const [categories, setCategories] = useState([]);
+const Navigation = ({ isAdmin }) => {
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.app);
   useEffect(() => {
     dispatch(actions.getCategories());
   }, []);
-
   return (
-    <div className="flex items-center justify-center w-full text-white bg-secondary">
-      <div className="flex items-center w-3/5 text-sm font-medium ">
+    <div
+      className={`w-full flex ${
+        isAdmin ? "justify-start" : "justify-center"
+      } items-center h-[40px] bg-secondary1 text-white`}
+    >
+      <div className="flex items-center w-3/5 h-full text-sm font-medium">
         <NavLink
           to={`/`}
           className={({ isActive }) => (isActive ? active : notActive)}
