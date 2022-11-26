@@ -17,7 +17,7 @@ const Navigation = ({ isAdmin }) => {
     <div
       className={`w-full flex ${
         isAdmin ? "justify-start" : "justify-center"
-      } items-center h-[40px] bg-secondary1 text-white`}
+      } items-center h-[40px] bg-secondary text-white`}
     >
       <div className="flex items-center w-3/5 h-full text-sm font-medium">
         <NavLink
