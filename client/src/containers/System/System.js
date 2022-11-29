@@ -11,9 +11,9 @@ const System = () => {
   return (
     <div className="flex flex-col items-center w-full h-screen">
       <Header />
-      <div className="flex flex-auto w-full">
+      <div className="flex flex-auto w-full h-screen">
         <Sidebar />
-        <div className="flex-auto h-full p-4 bg-white shadow-md">
+        <div className="flex-auto h-full p-4 overflow-y-scroll bg-white shadow-md">
           <Outlet />
         </div>
       </div>

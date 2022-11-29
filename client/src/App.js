@@ -8,7 +8,7 @@ import {
   SearchDetail,
 } from "./containers/Public";
 import { path } from "./utils/constant";
-import { System, CreatePost } from "./containers/System";
+import { System, CreatePost, ManagePost } from "./containers/System";
 import * as actions from "./store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -29,7 +29,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-primary">
+    <div className="overflow-hidden bg-primary">
       <Routes>
         <Route path={path.HOME} element={<Home />}>
           <Route path="*" element={<HomePage />} />
@@ -47,6 +47,7 @@ function App() {
         </Route>
         <Route path={path.SYSTEM} element={<System />}>
           <Route path={path.CREATE_POST} element={<CreatePost />} />
+          <Route path={path.MANAGE_POST} element={<ManagePost />} />
         </Route>
       </Routes>
     </div>

@@ -2,13 +2,12 @@ import React, { memo, useEffect, useState } from "react";
 import { Select, InputReadOnly } from "../components";
 import { apiGetPublicProvinces, apiGetPublicDistrict } from "../services";
 
-const Address = ({ setPayload }) => {
+const Address = ({ setPayload, invalidFields, setInvalidFields }) => {
   const [provinces, setProvinces] = useState([]);
   const [districts, setDistricts] = useState([]);
-  const [province, setProvince] = useState("");
-  const [district, setDistrict] = useState("");
+  const [province, setProvince] = useState();
+  const [district, setDistrict] = useState();
   const [reset, setReset] = useState(false);
-
   useEffect(() => {
     const fetchPublicProvince = async () => {
       const response = await apiGetPublicProvinces();
@@ -18,8 +17,9 @@ const Address = ({ setPayload }) => {
     };
     fetchPublicProvince();
   }, []);
+
   useEffect(() => {
-    setDistrict(null);
+    setDistrict("");
     const fetchPublicDistrict = async () => {
       const response = await apiGetPublicDistrict(province);
       if (response.status === 200) {
@@ -30,6 +30,7 @@ const Address = ({ setPayload }) => {
     !province ? setReset(true) : setReset(false);
     !province && setDistricts([]);
   }, [province]);
+
   useEffect(() => {
     setPayload((prev) => ({
       ...prev,
@@ -38,9 +39,9 @@ const Address = ({ setPayload }) => {
           ? `${
               districts?.find((item) => item.district_id === district)
                 ?.district_name
-            },`
+            }, `
           : ""
-      } ${
+      }${
         province
           ? provinces?.find((item) => item.province_id === province)
               ?.province_name
@@ -52,6 +53,7 @@ const Address = ({ setPayload }) => {
         : "",
     }));
   }, [province, district]);
+
   return (
     <div>
       <h2 className="py-4 text-xl font-semibold">Địa chỉ cho thuê</h2>
@@ -63,6 +65,8 @@ const Address = ({ setPayload }) => {
             setValue={setProvince}
             options={provinces}
             label="Tỉnh/Thành phố"
+            invalidFields={invalidFields}
+            setInvalidFields={setInvalidFields}
           />
           <Select
             reset={reset}
@@ -71,6 +75,8 @@ const Address = ({ setPayload }) => {
             setValue={setDistrict}
             options={districts}
             label="Quận/Huyện"
+            invalidFields={invalidFields}
+            setInvalidFields={setInvalidFields}
           />
         </div>
         <InputReadOnly
