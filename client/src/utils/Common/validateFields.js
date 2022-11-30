@@ -41,7 +41,7 @@ const validate = (payload, setInvalidFields) => {
         break;
       case "priceNumber":
       case "areaNumber":
-        if (+item[1]) {
+        if (+item[1] === 0) {
           setInvalidFields((prev) => [
             ...prev,
             {
