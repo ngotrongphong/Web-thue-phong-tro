@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../store/actions";
 import moment from "moment";
 import "moment/locale/vi";
+import { Button } from "../../components";
 
 const ManagePost = () => {
   const dispatch = useDispatch();
@@ -30,14 +31,15 @@ const ManagePost = () => {
       </div>
       <table className="w-full table-auto">
         <thead>
-          <tr>
-            <th className="p-2 border">Mã tin</th>
-            <th className="p-2 border">Ảnh đại diện</th>
-            <th className="p-2 border">Tiêu đề</th>
-            <th className="p-2 border">Giá</th>
-            <th className="p-2 border">Ngày bắt đầu</th>
-            <th className="p-2 border">Ngày hết hạn</th>
-            <th className="p-2 border">Trạng thái</th>
+          <tr className="flex w-full bg-gray-100">
+            <th className="flex-1 p-2 border">Mã tin</th>
+            <th className="flex-1 p-2 border">Ảnh đại diện</th>
+            <th className="flex-1 p-2 border">Tiêu đề</th>
+            <th className="flex-1 p-2 border">Giá</th>
+            <th className="flex-1 p-2 border">Ngày bắt đầu</th>
+            <th className="flex-1 p-2 border">Ngày hết hạn</th>
+            <th className="flex-1 p-2 border">Trạng thái</th>
+            <th className="flex-1 p-2 border">Tùy chọn</th>
           </tr>
         </thead>
         <tbody>
@@ -48,31 +50,45 @@ const ManagePost = () => {
           ) : (
             postOfCurrent?.map((item) => {
               return (
-                <tr key={item.id}>
-                  <td className="p-2 text-center border">
+                <tr className="flex items-center h-16" key={item.id}>
+                  <td className="flex items-center justify-center flex-1 h-full px-2 border">
                     {item?.overviews?.code}
                   </td>
-                  <td className="flex items-center justify-center p-2 border">
+                  <td className="flex items-center justify-center flex-1 h-full px-2 border">
                     <img
                       src={JSON.parse(item?.images?.image)[0] || ""}
                       alt="img-post"
                       className="object-cover w-10 h-10 rounded-md"
                     />
                   </td>
-                  <td className="p-2 text-center border">{item?.title}</td>
-                  <td className="p-2 text-center border">
+                  <td className="flex items-center justify-center flex-1 h-full px-2 border">
+                    {`${item?.title?.slice(0, 40)}...`}
+                  </td>
+                  <td className="flex items-center justify-center flex-1 h-full px-2 border">
                     {item?.attributes?.price}
                   </td>
-                  <td className="p-2 text-center border">
+                  <td className="flex items-center justify-center flex-1 h-full px-2 border">
                     {item?.overviews?.created}
                   </td>
-                  <td className="p-2 text-center border">
+                  <td className="flex items-center justify-center flex-1 h-full px-2 border">
                     {item?.overviews?.expired}
                   </td>
-                  <td className="p-2 text-center border">
+                  <td className="flex items-center justify-center flex-1 h-full px-2 border">
                     {checkStatus(item?.overviews?.expired?.split(" ")[3])
                       ? "Đang hoạt động"
                       : "Đã hết hạn"}
+                  </td>
+                  <td className="flex items-center justify-center flex-1 h-full gap-4 px-2 border">
+                    <Button
+                      text="Sửa"
+                      bgColor="bg-green-600"
+                      textColor="text-white"
+                    ></Button>
+                    <Button
+                      text="Xóa"
+                      bgColor="bg-orange-600"
+                      textColor="text-white"
+                    ></Button>
                   </td>
                 </tr>
               );

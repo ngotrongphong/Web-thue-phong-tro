@@ -10,8 +10,12 @@ const Button = ({ text, textColor, bgColor, icAfter, onClick, fullWidth }) => {
       } outline-none rounded-md hover:underline flex items-center justify-center gap-1 font-medium`}
       onClick={onClick}
     >
-      <span>{text}</span>
-      <span>{icAfter && <AiOutlinePlusCircle></AiOutlinePlusCircle>}</span>
+      <span className="text-center">{text}</span>
+      {icAfter && (
+        <span>
+          <icAfter />
+        </span>
+      )}
     </button>
   );
 };
