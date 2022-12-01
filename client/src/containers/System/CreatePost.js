@@ -1,28 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Overview, Address, Loading, Button } from "../../components";
-import { apiUploadImages } from "../../services";
+import { apiUpdatePost, apiUploadImages } from "../../services";
 import icons from "../../utils/icons";
 import { getCodes, getCodesArea } from "../../utils/Common/getCodes";
 import { useSelector } from "react-redux";
 import { apiCreatePost } from "../../services";
 import Swal from "sweetalert2";
 import validate from "../../utils/Common/validateFields";
+import { useDispatch } from "react-redux";
+import { resetDataEdit } from "../../store/actions";
 
 const { BsCameraFill, ImBin } = icons;
 
-const CreatePost = () => {
-  const [payload, setPayload] = useState({
-    categoryCode: "",
-    title: "",
-    priceNumber: 0,
-    areaNumber: 0,
-    images: "",
-    address: "",
-    priceCode: "",
-    areaCode: "",
-    description: "",
-    target: "",
-    province: "",
+const CreatePost = ({ isEdit }) => {
+  const dispatch = useDispatch();
+
+  const { dataEdit } = useSelector((state) => state.post);
+  const [payload, setPayload] = useState(() => {
+    const initData = {
+      categoryCode: dataEdit?.categoryCode || "",
+      title: dataEdit?.title || "",
+      priceNumber: dataEdit?.priceNumber * 1000000 || "",
+      areaNumber: dataEdit?.areaNumber || "",
+      images: dataEdit?.images?.image
+        ? JSON.parse(dataEdit?.images?.image)
+        : "",
+      address: dataEdit?.address || "",
+      priceCode: dataEdit?.priceCode || "",
+      areaCode: dataEdit?.areaCode || "",
+      description: dataEdit?.description
+        ? JSON.parse(dataEdit?.description)
+        : "",
+      target: dataEdit?.overviews?.target || "",
+      province: dataEdit?.province || "",
+    };
+    return initData;
   });
   const [imagesPreview, setImagesPreview] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -31,6 +43,13 @@ const CreatePost = () => {
   );
   const { currentData } = useSelector((state) => state.user);
   const [invalidFields, setInvalidFields] = useState([]);
+
+  useEffect(() => {
+    if (dataEdit) {
+      let images = JSON.parse(dataEdit?.images?.image);
+      images && setImagesPreview(images);
+    }
+  }, [dataEdit]);
 
   const handleFiles = async (e) => {
     e.stopPropagation();
@@ -83,33 +102,59 @@ const CreatePost = () => {
     };
     const result = validate(finalPayload, setInvalidFields);
     if (result === 0) {
-      const response = await apiCreatePost(finalPayload);
-      if (response?.data.err === 0) {
-        Swal.fire("Thành công", "Đã thêm bài đăng mới", "success").then(() => {
-          setPayload({
-            categoryCode: "",
-            title: "",
-            priceNumber: 0,
-            areaNumber: 0,
-            images: "",
-            address: "",
-            priceCode: "",
-            areaCode: "",
-            description: "",
-            target: "",
-            province: "",
+      if (dataEdit && isEdit) {
+        finalPayload.postId = dataEdit?.id;
+        finalPayload.attributesId = dataEdit?.attributesId;
+        finalPayload.imagesId = dataEdit?.imagesId;
+        finalPayload.overviewId = dataEdit?.overviewId;
+
+        const response = await apiUpdatePost(finalPayload);
+        if (response?.data.err === 0) {
+          Swal.fire(
+            "Thành công",
+            "Đã chỉnh sửa bài đăng thành công",
+            "success"
+          ).then(() => {
+            resetPayload();
+            dispatch(resetDataEdit());
           });
-        });
+        } else {
+          Swal.fire("Oops!", "Có lỗi gì đó", "error");
+        }
       } else {
-        Swal.fire("Oops!", "Có lỗi gì đó", "error");
+        const response = await apiCreatePost(finalPayload);
+        if (response?.data.err === 0) {
+          Swal.fire("Thành công", "Đã thêm bài đăng mới", "success").then(
+            () => {
+              resetPayload();
+            }
+          );
+        } else {
+          Swal.fire("Oops!", "Có lỗi gì đó", "error");
+        }
       }
     }
+  };
+  const resetPayload = () => {
+    setPayload({
+      categoryCode: "",
+      title: "",
+      priceNumber: 0,
+      areaNumber: 0,
+      images: "",
+      address: "",
+      priceCode: "",
+      areaCode: "",
+      description: "",
+      target: "",
+      province: "",
+    });
   };
 
   return (
     <div className="px-6">
       <h1 className="py-4 text-3xl font-medium border-b border-gray-200">
-        Đăng tin mới
+        {isEdit ? "Chỉnh sửa tin đăng" : "Đăng tin mới"}
       </h1>
       <div className="flex gap-4">
         <div className="flex flex-col flex-auto gap-8 py-4">
@@ -181,7 +226,7 @@ const CreatePost = () => {
           </div>
           <Button
             onClick={handleSubmit}
-            text="Tạo mới"
+            text={isEdit ? "Cập nhật" : "Tạo mới"}
             bgColor="bg-green-600"
             textColor="text-white"
           />

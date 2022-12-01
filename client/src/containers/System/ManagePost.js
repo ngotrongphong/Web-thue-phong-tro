@@ -1,16 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../store/actions";
 import moment from "moment";
 import "moment/locale/vi";
-import { Button } from "../../components";
+import { Button, UpdatePost } from "../../components";
 
 const ManagePost = () => {
   const dispatch = useDispatch();
-  const { postOfCurrent } = useSelector((state) => state.post);
+  const [isEdit, setIsEdit] = useState(false);
+  const { postOfCurrent, dataEdit } = useSelector((state) => state.post);
   useEffect(() => {
     dispatch(actions.getPostsLimitAdmin());
   }, []);
+
+  useEffect(() => {
+    !dataEdit && setIsEdit(false);
+  }, [dataEdit]);
 
   const checkStatus = (dateString) =>
     moment(dateString, process.env.REACT_APP_FORMAT_DATE).isSameOrAfter(
@@ -18,7 +23,7 @@ const ManagePost = () => {
     );
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 ">
       <div className="flex items-center justify-between py-4 border-b border-gray-200">
         <h1 className="text-3xl font-medium">Quản lý tin đăng</h1>
         <select
@@ -83,6 +88,10 @@ const ManagePost = () => {
                       text="Sửa"
                       bgColor="bg-green-600"
                       textColor="text-white"
+                      onClick={() => {
+                        dispatch(actions.editData(item));
+                        setIsEdit(true);
+                      }}
                     ></Button>
                     <Button
                       text="Xóa"
@@ -96,6 +105,7 @@ const ManagePost = () => {
           )}
         </tbody>
       </table>
+      {isEdit && <UpdatePost setIsEdit={setIsEdit} />}
     </div>
   );
 };
