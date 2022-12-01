@@ -9,14 +9,17 @@ const InputFormV2 = ({
   small,
   invalidFields,
   setInvalidFields,
+  direction,
 }) => {
   return (
-    <div>
-      <label htmlFor="title">{label}</label>
-      <div className="flex items-center">
+    <div className={`flex ${direction ? direction : "flex-col"}`}>
+      <label className="flex-none w-48" htmlFor="title">
+        {label}
+      </label>
+      <div className="flex items-center flex-auto">
         <input
           type="text"
-          id=" title"
+          id="title"
           className={`${
             unit ? "rounded-tl-md rounded-bl-md" : "rounded-md"
           } outline-none border flex-auto border-gray-300 p-2`}
@@ -33,12 +36,12 @@ const InputFormV2 = ({
         )}
       </div>
       {small && <small className="whitespace-nowrap opacity-70">{small}</small>}
-      <small className="block w-full text-red-500">
-        {invalidFields?.some((item) => item.name === name) &&
-          invalidFields?.find((item) => item.name === name)?.message}
-      </small>
+      {invalidFields?.some((item) => item.name === name) && (
+        <small className="block w-full text-red-500">
+          {invalidFields?.find((item) => item.name === name)?.message}
+        </small>
+      )}
     </div>
   );
 };
-
 export default InputFormV2;
