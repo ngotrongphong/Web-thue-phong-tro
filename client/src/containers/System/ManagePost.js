@@ -4,14 +4,17 @@ import * as actions from "../../store/actions";
 import moment from "moment";
 import "moment/locale/vi";
 import { Button, UpdatePost } from "../../components";
+import { apiDeletePost } from "../../services";
+import Swal from "sweetalert2";
 
 const ManagePost = () => {
   const dispatch = useDispatch();
   const [isEdit, setIsEdit] = useState(false);
   const { postOfCurrent, dataEdit } = useSelector((state) => state.post);
+  const [updateData, setUpdateData] = useState(false);
   useEffect(() => {
-    dispatch(actions.getPostsLimitAdmin());
-  }, []);
+    !dataEdit && dispatch(actions.getPostsLimitAdmin());
+  }, [dataEdit, updateData]);
 
   useEffect(() => {
     !dataEdit && setIsEdit(false);
@@ -21,6 +24,16 @@ const ManagePost = () => {
     moment(dateString, process.env.REACT_APP_FORMAT_DATE).isSameOrAfter(
       new Date().toDateString()
     );
+
+  const handleDeletePost = async (postId) => {
+    const response = await apiDeletePost(postId);
+    if (response?.data.err === 0) {
+      setUpdateData((prev) => !prev);
+      Swal.fire("Thành công", "Đã xóa tin đăng", "success");
+    } else {
+      Swal.fire("Oops!", "Xóa tin đăng thất bại", "error");
+    }
+  };
 
   return (
     <div className="flex flex-col gap-6 ">
@@ -97,6 +110,7 @@ const ManagePost = () => {
                       text="Xóa"
                       bgColor="bg-orange-600"
                       textColor="text-white"
+                      onClick={() => handleDeletePost(item.id)}
                     ></Button>
                   </td>
                 </tr>
