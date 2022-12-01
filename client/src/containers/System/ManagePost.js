@@ -12,9 +12,15 @@ const ManagePost = () => {
   const [isEdit, setIsEdit] = useState(false);
   const { postOfCurrent, dataEdit } = useSelector((state) => state.post);
   const [updateData, setUpdateData] = useState(false);
+  const [posts, setPosts] = useState([]);
+  const [status, setStatus] = useState("0");
   useEffect(() => {
     !dataEdit && dispatch(actions.getPostsLimitAdmin());
   }, [dataEdit, updateData]);
+
+  useEffect(() => {
+    setPosts(postOfCurrent);
+  }, [postOfCurrent]);
 
   useEffect(() => {
     !dataEdit && setIsEdit(false);
@@ -35,16 +41,34 @@ const ManagePost = () => {
     }
   };
 
+  useEffect(() => {
+    if (status === 1) {
+      const activePost = postOfCurrent?.filter((item) =>
+        checkStatus(item?.overviews?.expired?.split(" ")[3])
+      );
+      setPosts(activePost);
+    } else if (status === 2) {
+      const expiredPost = postOfCurrent?.filter(
+        (item) => !checkStatus(item?.overviews?.expired?.split(" ")[3])
+      );
+      setPosts(expiredPost);
+    } else {
+      setPosts(postOfCurrent);
+    }
+  }, [status]);
+
   return (
     <div className="flex flex-col gap-6 ">
       <div className="flex items-center justify-between py-4 border-b border-gray-200">
         <h1 className="text-3xl font-medium">Quản lý tin đăng</h1>
         <select
-          name=""
-          id=""
+          onChange={(e) => setStatus(+e.target.value)}
+          value={status}
           className="p-2 border border-gray-200 rounded-md outline-none"
         >
-          <option value="">Lọc theo trạng thái</option>
+          <option value="0">Lọc theo trạng thái</option>
+          <option value="1">Đang hoạt động</option>
+          <option value="2">Đã hết hạn</option>
         </select>
       </div>
       <table className="w-full table-auto">
@@ -61,12 +85,12 @@ const ManagePost = () => {
           </tr>
         </thead>
         <tbody>
-          {!postOfCurrent ? (
+          {!posts ? (
             <tr>
               <td>dasdasd</td>
             </tr>
           ) : (
-            postOfCurrent?.map((item) => {
+            posts?.map((item) => {
               return (
                 <tr className="flex items-center h-16" key={item.id}>
                   <td className="flex items-center justify-center flex-1 h-full px-2 border">
