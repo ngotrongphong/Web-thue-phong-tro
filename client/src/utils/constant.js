@@ -12,6 +12,8 @@ export const path = {
   CREATE_POST: "tao-moi-bai-dang",
   MANAGE_POST: "quan-ly-bai-dang",
   EDIT_ACCOUNT: "sua-thong-tin-ca-nhan",
+  DETAIL: "chi-tiet/",
+  DETAIL_ALL: "chi-tiet/*",
 };
 
 export const text = {

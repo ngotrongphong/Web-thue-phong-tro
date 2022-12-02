@@ -20,7 +20,7 @@ const Sidebar = () => {
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-4">
           <img
-            src={blobToBase64(currentData?.avatar) || anonAvatar}
+            // src={blobToBase64(currentData?.avatar) || anonAvatar}
             alt="avatar"
             className="object-cover w-12 h-12 border-2 border-white rounded-full"
           />

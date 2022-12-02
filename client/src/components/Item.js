@@ -1,7 +1,8 @@
 import React, { memo, useState } from "react";
 import icons from "../utils/icons";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { formatVietnameseToString } from "../utils/Common/formatVietnameseToString";
+import { path } from "../utils/constant";
 
 const indexs = [0, 1, 2, 3];
 
@@ -28,7 +29,9 @@ const Item = ({
   return (
     <div className="flex w-full py-4 border-t border-orange-600">
       <Link
-        to={`chi-tiet/${formatVietnameseToString(title)}/${id}`}
+        to={`${path.DETAIL}${formatVietnameseToString(
+          title?.replaceAll("/", "")
+        )}/${id}`}
         className="w-2/5 flex flex-wrap gap-[2px] items-center relative cursor-pointer"
       >
         {images.length > 0 &&
@@ -59,13 +62,18 @@ const Item = ({
       </Link>
       <div className="w-3/5">
         <div className="flex justify-between w-full gap-4">
-          <div className="font-medium text-red-600">
+          <Link
+            to={`${path.DETAIL}${formatVietnameseToString(
+              title?.replaceAll("/", "")
+            )}/${id}`}
+            className="font-medium text-red-600"
+          >
             {handleStar(+star).length > 0 &&
               handleStar(+star).map((star, number) => {
                 return <span key={number}>{star}</span>;
               })}
             {title}
-          </div>
+          </Link>
           <div className="w-[10%] flex justify-end">
             <BsBookmarkStarFill size={24} color="orange" />
           </div>

@@ -103,7 +103,7 @@ const EditAccount = () => {
                 type="file"
                 id="avatar"
                 className="my-4 appearance-none"
-                onChange={handleUploadFile}
+                // onChange={handleUploadFile}
               />
             </div>
           </div>
@@ -111,7 +111,7 @@ const EditAccount = () => {
             text="Cập nhật"
             bgColor="bg-blue-600"
             textColor="text-white"
-            onClick={handleSubmit}
+            // onClick={handleSubmit}
           />
         </div>
       </div>
