@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import anonAvatar from "../assets/anon-avatar.png";
+import { blobToBase64 } from "../utils/Common/tobase64";
 
 const User = () => {
   const { currentData } = useSelector((state) => state.user);
@@ -8,7 +9,7 @@ const User = () => {
   return (
     <div className="flex items-center gap-2">
       <img
-        src={currentData?.avatar || anonAvatar}
+        src={blobToBase64(currentData?.avatar) || anonAvatar}
         alt="avatar"
         className="object-cover w-10 h-10 border-2 border-white rounded-full shadow-md"
       />

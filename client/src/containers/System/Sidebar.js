@@ -5,6 +5,7 @@ import menuSidebar from "../../utils/menuSidebar";
 import { NavLink } from "react-router-dom";
 import * as actions from "../../store/actions";
 import { AiOutlineLogout } from "react-icons/ai";
+import { blobToBase64 } from "../../utils/Common/tobase64";
 
 const activeStyle =
   "hover:bg-gray-200 flex rounded-md items-center gap-2 py-2 font-bold bg-gray-200";
@@ -19,7 +20,7 @@ const Sidebar = () => {
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-4">
           <img
-            src={anonAvatar}
+            src={blobToBase64(currentData?.avatar) || anonAvatar}
             alt="avatar"
             className="object-cover w-12 h-12 border-2 border-white rounded-full"
           />
