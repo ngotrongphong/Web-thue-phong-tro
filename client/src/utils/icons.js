@@ -5,6 +5,8 @@ import {
   BsBookmarkStarFill,
   BsChevronDown,
   BsCameraFill,
+  BsStopwatch,
+  BsHash,
 } from "react-icons/bs";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { TbReportMoney } from "react-icons/tb";
@@ -36,6 +38,8 @@ const icons = {
   BsChevronDown,
   ImBin,
   BsCameraFill,
+  BsStopwatch,
+  BsHash,
 };
 
 export default icons;
