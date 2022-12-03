@@ -5,6 +5,7 @@ import { getPostsLimit } from "../../store/actions";
 import { Slider } from "../../components";
 import icons from "../../utils/icons";
 import objToArr from "../../utils/Common/objToArr";
+import { underMap } from "../../utils/constant";
 
 const {
   HiOutlineLocationMarker,
@@ -133,6 +134,11 @@ const DetailPost = () => {
                 </tr>
               </tbody>
             </table>
+          </div>
+          <div className="mt-8">
+            <span className="py-4 text-sm text-justify text-gray-500">{`${underMap[0]}`}</span>
+            <span className="py-4 text-sm italic text-justify text-gray-500">{`${posts[0]?.title} - Mã tin: ${posts[0]?.attributes?.hashtag}`}</span>
+            <span className="py-4 text-sm text-justify text-gray-500">{`${underMap[1]}`}</span>
           </div>
         </div>
       </div>

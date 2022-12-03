@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import validate from "../../utils/Common/validateFields";
 import { useDispatch } from "react-redux";
 import { resetDataEdit } from "../../store/actions";
+import { attention } from "../../utils/constant";
 
 const { BsCameraFill, ImBin } = icons;
 
@@ -232,9 +233,17 @@ const CreatePost = ({ isEdit }) => {
           />
           <div className="h-[500px]"></div>
         </div>
-        <div className="w-[30%] flex-none">
+        <div className="w-[30%] flex-none pt-12">
           maps
           <Loading />
+          <div className="p-4 mt-8 text-orange-900 bg-orange-100 rounded-md">
+            <h4 className="mb-4 text-xl font-medium">Lưu ý khi đăng tin</h4>
+            <ul className="pl-6 text-sm text-justify list-disc">
+              {attention.map((item, index) => {
+                return <li key={index}>{item}</li>;
+              })}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
